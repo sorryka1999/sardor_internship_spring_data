@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>employeelist</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div>
+        <table class="table table-bordered">
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>surname</th>
+                <th>position</th>
+            </tr>
+            <tr th:each="employee : ${employeelist}">
+                <td><span th:text="${employee.id}"/></td>
+                <td><span th:text="${employee.name}"/></td>
+                <td><span th:text="${employee.surname}"/></td>
+                <td><span th:text="${employee.position}"/></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

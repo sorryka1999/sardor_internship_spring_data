@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>interlist</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div>
+        <table class="table table-bordered">
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>surname</th>
+                <th>age</th>
+                <th>hobby</th>
+            </tr>
+            <tr th:each="intern : ${internslist}">
+                <td><span th:text="${intern.id}"/></td>
+                <td><span th:text="${intern.name}"/></td>
+                <td><span th:text="${intern.surname}"/></td>
+                <td><span th:text="${intern.age}"/></td>
+                <td><span th:text="${intern.hobby}"/></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
