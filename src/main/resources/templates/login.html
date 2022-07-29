@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body style="width: 640px; margin: auto;">
+
+    <div class="mt-4 border border-success rounded-lg p-4">
+        <h2 class="mb-4">Login</h2>
+
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                id="email" placeholder="Enter your email" name="username" required>
+			</div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control"
+                id="password" placeholder="Enter password" name="password" required>
+            </div>
+
+			<button type="submit" class="btn btn-success">Login</button>
+		</form>
+
+    </div>
+
+</body>
+</html>
