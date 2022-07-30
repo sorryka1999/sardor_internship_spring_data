@@ -8,6 +8,15 @@
 <body style="width: 640px; margin: auto;">
 
     <div class="mt-4 border border-success rounded-lg p-4">
+
+        <div th:if="${param.error}" class="m-2 border border-danger rounded-lg p-4">
+            <h3>Invalid email or password.</h3>
+        </div>
+
+        <div th:if="${param.logout}" class="m-2 border border-danger rounded-lg p-4">
+            <h3>You have been logged out.</h3>
+        </div>
+
         <h2 class="mb-4">Login</h2>
 
         <form th:action="@{/login}" method="post">
