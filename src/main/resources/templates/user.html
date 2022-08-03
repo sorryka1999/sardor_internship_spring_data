@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Users</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body style="width: 800px; margin: auto;">
+
+    <div class="my-3 border border-success rounded-lg p-4">
+        <h3>Admin page</h3>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-warning">Logout</button>
+        </form>
+    </div>
+
+    <div style="width: 400px; margin: auto;" class="border border-success rounded-lg p-4">
+        <form th:action="@{/user/add}" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" pattern="[A-Za-z]{1,32}"
+                id="name" placeholder="Enter name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="surname">Surname</label>
+                <input type="text" class="form-control" pattern="[A-Za-z]{1,32}"
+                id="surname" placeholder="Enter surname" name="surname" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text" class="form-control" pattern="\d*"
+                id="age" placeholder="Enter age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                id="email" placeholder="Enter email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                id="password" placeholder="Enter password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label>Role</label>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input"
+                    id="radio1" name="role" value="admin" checked>
+                    <label for="radio1" class="form-check-label">Admin</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input"
+                    id="radio2" name="role" value="manager">
+                    <label for="radio2" class="form-check-label">Manager</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input"
+                    id="radio3" name="role" value="mentor">
+                    <label for="radio3" class="form-check-label">Mentor</label>
+                </div>
+            </div>
+            <button type="submit" class="mt-4 btn btn-success">Add user</button>
+        </form>
+    </div>
+
+    <table class="my-3 table table-bordered">
+        <tr>
+            <th>name</th>
+            <th>surname</th>
+            <th>age</th>
+            <th>email</th>
+            <th>role</th>
+            <th>is active</th>
+            <th>action</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td><span th:text="${user.name}"/></td>
+            <td><span th:text="${user.surname}"/></td>
+            <td><span th:text="${user.age}"/></td>
+            <td><span th:text="${user.email}"/></td>
+            <td><span th:text="${user.roles}"/></td>
+            <td><span th:text="${user.active}"/></td>
+            <td>
+                <form th:action="@{'/user/edit/' + ${user.id}}" method="get">
+                    <button type="submit" class="btn btn-warning">Edit</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
