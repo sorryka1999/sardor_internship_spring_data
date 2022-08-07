@@ -1,31 +1,18 @@
-package megafon.internship.entity;
+package megafon.internship.dao;
 
-import megafon.internship.dao.InternDAO;
+public class InternDAO {
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class Interns {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "interns_id_seq")
     private Long id;
     private String name;
     private String surname;
     private Integer age;
     private String hobby;
 
-    public static InternDAO entityToDAO(Interns interns) {
-        return new InternDAO(interns.getId(), interns.getName(),
-                interns.getSurname(), interns.getAge(), interns.getHobby());
+    public InternDAO() {
     }
 
-    public Interns() {
-    }
-    public Interns(String name, String surname, Integer age, String hobby) {
+    public InternDAO(Long id, String name, String surname, Integer age, String hobby) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.age = age;

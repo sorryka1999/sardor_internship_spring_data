@@ -1,5 +1,6 @@
 package megafon.internship.services;
 
+import megafon.internship.dao.InternDAO;
 import megafon.internship.entity.Interns;
 import megafon.internship.repository.InternsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class InternsService {
@@ -16,6 +18,15 @@ public class InternsService {
 
     public List<Interns> getAllInterns() {
         return internsRepo.findAll();
+    }
+
+    public List<InternDAO> getAllInternsDAO() {
+        List<Interns> internsList = internsRepo.findAll();
+
+        List<InternDAO> internDAOList = internsList.stream()
+                .map(Interns::entityToDAO)
+                .collect(Collectors.toList());
+        return internDAOList;
     }
 
     public void addIntern(String name, String surname, int age, String hobby) {

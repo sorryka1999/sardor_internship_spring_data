@@ -30,8 +30,6 @@ public class UrlAuthenticationSuccessHandler implements AuthenticationSuccessHan
             HttpServletRequest request, HttpServletResponse response,
             FilterChain chain, Authentication authentication
     ) throws IOException, ServletException {
-//        AuthenticationSuccessHandler.super.onAuthenticationSuccess(
-//                request, response, chain, authentication);
         handle(request, response, authentication);
         clearAuthenticationAttributes(request);
     }

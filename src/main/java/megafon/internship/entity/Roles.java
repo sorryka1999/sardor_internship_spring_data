@@ -15,6 +15,7 @@ public class Roles implements GrantedAuthority {
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id")
     private Set<Users> users;
 
     public Roles() {

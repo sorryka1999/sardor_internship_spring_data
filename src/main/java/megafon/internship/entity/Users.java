@@ -1,5 +1,6 @@
 package megafon.internship.entity;
 
+import megafon.internship.dao.UserDAO;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -26,6 +27,11 @@ public class Users implements UserDetails {
 
     @Column(name = "isactive")
     private Boolean isActive;
+
+    public static UserDAO entityToDAO(Users user) {
+        return new UserDAO(user.getId(), user.getName(), user.getSurname(),
+                user.getAge(), user.getEmail(), user.getRoles(), user.getActive());
+    }
 
     public Users() {
     }
