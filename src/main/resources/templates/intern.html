@@ -40,6 +40,14 @@
         </form>
     </div>
 
+    <div class="my-2"></div>
+
+    <div style="width: 400px; margin: auto;" class="border border-success rounded-lg p-4">
+        <form th:action="@{/intern/tasks/all}" method="get">
+            <button type="submit" class="btn btn-info">All tasks</button>
+        </form>
+    </div>
+
     <table class="my-3 table table-bordered">
         <tr>
             <th>name</th>
@@ -56,6 +64,10 @@
             <td>
                 <form th:action="@{'/intern/edit/' + ${intern.id}}" method="get">
                     <button type="submit" class="btn btn-warning">Edit</button>
+                </form>
+                <div class="my-1"></div>
+                <form th:action="@{'/intern/tasks/' + ${intern.id}}" method="get">
+                    <button type="submit" class="btn btn-info">Add task</button>
                 </form>
             </td>
         </tr>

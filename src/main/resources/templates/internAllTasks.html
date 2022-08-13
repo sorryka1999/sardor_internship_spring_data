@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Intern All Tasks</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body style="width: 800px; margin: auto;">
+
+    <div class="my-3 border border-success rounded-lg p-4">
+        <h3>Mentor page</h3>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-warning">Logout</button>
+        </form>
+    </div>
+
+    <div style="width: 400px; margin: auto;" class="mb-3 border border-success rounded-lg p-4">
+        <pre id="json" th:text="${tasks}"></pre>
+        <script>
+            var element = document.getElementById("json");
+            var obj = JSON.parse(element.innerText);
+            element.innerHTML = JSON.stringify(obj, undefined, 2);
+        </script>
+    </div>
+
+</body>
+</html>

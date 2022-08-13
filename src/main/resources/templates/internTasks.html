@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Intern Tasks</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body style="width: 800px; margin: auto;">
+
+    <div class="my-3 border border-success rounded-lg p-4">
+        <h3>Mentor page</h3>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-warning">Logout</button>
+        </form>
+    </div>
+
+    <div style="width: 400px; margin: auto;" class="mb-3 border border-success rounded-lg p-4">
+        <h4>Intern data:</h4>
+        <h5>Name: <span th:text="${intern.name}"></span></h5>
+        <h5>Surname: <span th:text="${intern.surname}"></span></h5>
+        <h5>Age: <span th:text="${intern.age}"></span></h5>
+        <h5>Hobby: <span th:text="${intern.hobby}"></span></h5>
+    </div>
+
+    <div style="width: 400px; margin: auto;" class="border border-success rounded-lg p-4">
+        <form th:action="@{'/intern/' + ${intern.id} + '/tasks/add'}"  method="post">
+            <div class="form-group">
+              <label for="description">Task Description</label>
+              <textarea name="taskDescription" class="form-control"
+                        id="description" rows="3"></textarea>
+            </div>
+            <button type="submit" class="mt-4 btn btn-success">Create Task</button>
+        </form>
+    </div>
+
+    <table class="my-3 table table-bordered">
+        <tr>
+            <th>description</th>
+            <th>creation date</th>
+            <th>action</th>
+        </tr>
+        <tr th:each="task : ${tasks}">
+            <td><span th:text="${task.taskDescription}"></span></td>
+            <td><span th:text="${task.creationDate}"></span></td>
+            <td>
+                <form th:action="@{'/intern/' + ${intern.id} + '/task/' + ${task.id} + '/delete'}"
+                      method="post">
+                    <button type="submit" class="btn btn-warning">Delete</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
